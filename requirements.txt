@@ -1,0 +1,9 @@
+chromedriver-autoinstaller>=0.4.0
+langchain==0.3.13
+langchain-community==0.3.13
+langchain-core==0.3.28
+langchain-text-splitters==0.3.4
+pre-commit>=2.13
+selenium>=4.0
+streamlit>=1.0.0
+urllib3>=1.26.14

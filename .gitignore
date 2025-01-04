@@ -181,4 +181,4 @@ api/tokens.py
 **.bin
 
 # raw data
-**.txt
+data/*.txt
