@@ -24,6 +24,7 @@ lint:
 
 crawling:
 	$(python) crawler.py
+	$(python) vector_space.py
 
 run:
 	streamlit run main.py
