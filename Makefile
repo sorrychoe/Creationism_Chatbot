@@ -1,4 +1,4 @@
-.PHONY: init lint run clean
+.PHONY: init lint crawling run clean remove
 
 NAME = Creation_LLM
 
@@ -14,20 +14,23 @@ ifdef user
 endif
 
 init:
-	$(python) -m pip install $(pip_user_option) --upgrade pip \
+	$(python) -m pip install $(pip_user_option) --upgrade pip
 	$(python) -m pip install $(pip_user_option) -r requirements.txt
 	pre-commit install
 
-# lint:
-# 	$(python) -m isort --settings-file=.isort.cfg ./
-# 	$(python) -m flake8 --config=.flake8 ./
+lint:
+	$(python) -m isort --settings-file=.isort.cfg ./
+	$(python) -m flake8 --config=.flake8 ./
 
 crawling:
 	$(python) crawler.py
+
+run:
+	streamlit run main.py
 
 clear:
 	rm -fr **/__pycache__/
 
 remove:
 	rm -fr **/chromedriver \
-	rm -fr data/**.txt 
+	rm -fr data/**.txt

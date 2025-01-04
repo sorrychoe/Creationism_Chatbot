@@ -1,6 +1,6 @@
 import os
-import warnings
 import platform
+import warnings
 from time import sleep
 
 import chromedriver_autoinstaller
@@ -60,17 +60,20 @@ def main(url: str):
     sleep(3)
     for num in range(1, 17):
         print("\033[31m" + f"Q{num}번 데이터 추출 시작" + "\033[0m")
-        
+
         driver.find_element(By.XPATH, f'//div[@id="accordion"]/div[{num}]/div[1]/h4/a').click()
         sleep(2)
-        
+
         try:
             even = 2
             while True:
                 file_name = driver.find_element(By.XPATH, f'//div[@id="accordion"]/div[{num}]/div[2]/div/div[2]/strong/p[{even-1}]').text
                 element = WebDriverWait(driver, 10).until(
-                        EC.presence_of_element_located((By.XPATH, f'//*[@id="accordion"]/div[{num}]/div[2]/div/div[2]/strong/p[{even}]/span/a')),
-                    )
+                    EC.presence_of_element_located((
+                        By.XPATH,
+                        f'//*[@id="accordion"]/div[{num}]/div[2]/div/div[2]/strong/p[{even}]/span/a',
+                    )),
+                )
 
                 actions = ActionChains(driver)
                 actions.key_down(Control).click(element).key_up(Control).perform()
@@ -79,7 +82,7 @@ def main(url: str):
                 main_window = driver.window_handles
                 driver.switch_to.window(main_window[1])
                 sleep(3)
-                    
+
                 try:
                     text = driver.find_element(By.XPATH, '/html/body/div[5]/main/div/div[2]/div/div/div/div[2]/div/div/div/div[2]/div[1]').text
 
@@ -88,7 +91,7 @@ def main(url: str):
                     f.write(text)
                     f.close()
                     print("\033[96m" + "Crawled" + "\033[0m")
-                
+
                 except:
                     print("\033[32m" + "passed" + "\033[0m")
 
@@ -99,7 +102,7 @@ def main(url: str):
                     even += 2
         except :
             print("\033[96m" + f"===Q{num}번 추출 완료===" + "\033[0m")
-            
+
     print("crawling 종료")
     driver.quit()
 

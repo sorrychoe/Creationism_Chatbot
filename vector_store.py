@@ -1,7 +1,5 @@
 import os
 
-from langchain_community.embeddings import OpenAIEmbeddings
-
 from api import tokens
 from model.doc import ingest_txt_documents
 
@@ -12,7 +10,5 @@ if __name__ == "__main__":
     db_path = os.path.join(os.getcwd(), "db")
 
     text_path = "./data/"
-    
+
     ingest_txt_documents(text_path, db_path, openai_api_key)
-
-
