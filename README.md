@@ -1,4 +1,4 @@
-# 한동대학교 창조와 진화 질의응답 Chatbot With LLM
+# 창조와 진화 교과목 Q&A Chatbot With LLM
 
 ```bash
 ├── Makefile
